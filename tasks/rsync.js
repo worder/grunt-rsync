@@ -14,13 +14,13 @@ module.exports = function (grunt) {
 
         if ( !options.onStdout ) {
             options.onStdout = function (data) {
-                grunt.log.write(data.toString("utf8"));
+                grunt.verbose.write(data.toString("utf8"));
             };
         }
 
         try {
             rsync(options,function (error,stdout,stderr,cmd) {
-                grunt.log.writeln("Shell command was: "+cmd);
+                grunt.log.debug("Shell command was: "+cmd);
                 if ( error ) {
                     grunt.log.error();
                     grunt.log.writeln(error.toString().red);
